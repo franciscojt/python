@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <style>
+       
+       .wrapper {
+           background-color: ;
+       }
+    
+       .flash {
+           color: white;
+           background: red;
+           width: 300px;
+           font-weight: bold;
+       }
+       
+       h1 {
+           text-align: center;
+           font-family: 'Comic Sans MS', "Times New Roman";
+       }
+       .login label, .register label{
+           padding: 5px;
+           display: block;
+           
+       }
+       
+       .login h3 , .register h3{
+           text-align: center;
+       }
+       .login, .register{
+           
+           align-items: ;
+           width: 40%;
+           height: auto;
+        
+       }
+       .login, .register{
+           display:inline-block;
+       }
+       .register {
+           width: 40%;
+           display: inline-block;
+
+       }
+
+    </style>
+    <meta charset="UTF-8">
+    <title>Wall</title>
+</head>
+<body class="wrapper">
+    <h1>WELCOME TO THE WALL</h1>
+    <div class="flash">
+    {% with messages = get_flashed_messages() %}
+        {% if messages %}
+            {% for message in messages %}
+                <p>{{ message }}</p>
+            {% endfor %}
+        {% endif %}
+    {% endwith %}
+    </div>
+    <div id = "registration">
+        <form action="/login" method="post" class="login"> <h3>Log in</h3>
+            <label for="email">Email: <input type="email" name= "email" value = ""/></label>
+            <label for="pwd">Password: <input type="password" name="pwd" value=""/></label>
+            <button type="submit" value="submit">Log in</button>
+        </form>
+        
+        <form action="/registration" method="post" class ="register"> <h3>Resgistration</h3>
+            <label for="fname">First name: <input type="text" name="fname" value=""/></label>
+            <label for="lname">Last name: <input type="text" name = "lname" value=""/></label>
+            <label for="email">Email: <input type="email" name="email" value=""/></label>
+            <label for="pwd">Password: <input type="password" name = "pwd" value = ""/></label>
+           <label for="cpwd"> Confirm Password: <input type="password" name="cpwd" value =""/></label>    
+            <button type="submit" value="Submit">Register</button>
+        </form>
+    </div>
+</body>
+
+</html>

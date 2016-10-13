@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{{ session['info']['fname']}} {{session['info']['lname']}} Wall</title>
+</head>
+<style>
+    h2{
+        text-align: center;
+        font-family: "Comic Sans MS", "Times New Roman"
+    }
+    a {
+        display: block;
+        text-align: left;
+    }
+    .form1 label, textarea  {
+        display: block;
+        padding: 2px;
+   
+    }
+    .form2 label, textarea  {
+        display: block;
+        padding: 2px;
+   
+    }
+
+    .flash {
+           color: white;
+           background: red;
+           width: 300px;
+           font-weight: bold;
+       }
+    
+    
+</style>
+<body>
+    <h2>Welcome to {{session['info']['fname']}} {{session['info']['lname']}}'s Wall </h2>
+    <a href="/logout">Log Out</a>
+    {% with messages = get_flashed_messages() %}
+        {% if messages %}
+            {% for x in messages %}
+                <p class = "flash">{{x}}</p>
+            {% endfor %}
+        {% endif %}
+    {% endwith %}
+    <form action="/message" method="post" class = "form1">
+        <label for="message">Post a Message Below</label>
+        <textarea name="message" id="post" cols="150" rows="10"></textarea>
+        <button type="submit" value="submit">Post the Message</button>
+    </form>
+    {% for m in messages %}
+    <div class= "square">
+       
+        <h3>{{m['fname']}} {{m['lname']}} Poseted a Message on -- {{m['date']}}</h3>
+          
+           <p>{{m['message']}}</p>
+             
+              {% for c in comments %}
+                  {% if c['cid'] == m['mid'] %}
+                      <h4>{{c['fname']}} {{c['lname']}} commented on -- {{c['date']}}</h4>
+                      <p>{{c['comment']}}</p>
+                    {% endif %}
+                {% endfor %}
+    </div>
+    <form class "form2" action="/comment/{{m['mid']}}" method="post">
+        <label for="comment">Post a Message Below</label>
+        <input type="hidden" value = "#{{messageid}}">
+        <textarea name="comment" id="post" cols="50" rows="2"></textarea>
+        <button type="submit" value="submit">Comment</button>
+    </form>
+         <hr>
+          {% endfor %}
+
+   
+</body>
+</html>
