@@ -1,0 +1,44 @@
+<html>
+  <head>
+    <link rel="stylesheet" href="../static/css/form.css" type="text/css">
+    <title>Coding Dojo Form</title>
+  </head>
+  <body>
+	<h1>Coding Dojo Form</h1>
+	<form id = "{{session['form']}}" action="/send" method="post">
+		<label for="name">Name: <input type="text" name="name" value""/></label>
+		<label for="location">Location: 
+			<select name="location" id="">
+				<option	 value="San_Francisco">San Francisco</option>
+				<option  value="Dallas">Dallas</option>
+				<option value="Seattle">Seattle</option>
+			</select>			
+		</label>
+		<label for="laguage">Language: 
+			<select name="language">
+				<option	 value="Python">Python</option>
+				<option  value="HTML">HTML</option>
+				<option value="CSS">CSS</option>
+			</select>			
+		</label>
+		<label for="comment">Comment: 
+		<textarea name="comment" id="" cols="30" rows="5"></textarea></label>
+		<button name = "submit" value="submit">Submit</button>
+	</form>
+	<div id ="{{session['results']}}">
+
+		<h3>Thanks for submitting thid form! You have submitted this form {{session['counter']}} times now.</h3>
+		<div class="answer">
+			<p>Name: {{session['name']}}</p>
+			<p>Location: {{session['location']}}</p>
+			<p>Language: {{session['language']}}</p>
+			<p>Comment: {{session['comment']}}</p>
+			<a href="/back"><button>Back</button></a>
+			</form>
+			
+		</div>
+	</div>
+	<a href="/clear">Clear Session</a>
+  </body>
+  
+</html>

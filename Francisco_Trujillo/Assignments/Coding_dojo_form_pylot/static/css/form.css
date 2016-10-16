@@ -1,0 +1,44 @@
+* {
+  font-family: Arial;
+}
+form label{
+	display: block;
+	padding: 5
+		
+}
+form label textarea{
+	display: block
+}
+form, .answer {
+	width: 500px;
+	height: 270px;
+	padding: 10px;
+	border: 2px solid blue;
+	border-radius: 10px;
+	
+}
+form button, a button {
+	width: 100px;
+	background: 100px blue;
+	color: #fff;
+	border-radius: 10px;
+}
+
+form select {
+	width: 120px;
+}
+
+#hide {
+	display: none;
+}
+
+#display{
+	display: block;
+}
+
+h3{
+	background: #0c0;
+	width: 500px;
+	padding: 10px;
+	border-radius: 10px;
+}
